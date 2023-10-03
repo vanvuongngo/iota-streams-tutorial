@@ -1,6 +1,6 @@
 Apache License
 
-Copyright 2023 adrian-grassl and Van Vuong Ngo
+Copyright 2023 Adrian Grassl and Van Vuong Ngo
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
