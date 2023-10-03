@@ -18,12 +18,12 @@ async function createAuthor() {
   // Create author with new seed
   let authorSeed = createSeed();
   let author = new streams.Author(authorSeed, options.clone(), false);
-  
+
   console.log("Author seed: ", authorSeed);
   console.log("Channel address: ", author.channel_address());
   console.log("Multi branching: ", author.is_multi_branching());
 
-  return(author.clone());
+  return (author.clone());
 }
 
 
@@ -72,11 +72,11 @@ async function receiveSubscription(author) {
 
 async function fetchNewMessages(author) {
   console.log('\x1b[36m%s\x1b[0m', 'Author: Fetch new messages from channel');
-  
+
   // Fetch new messages
   let exists = true;
   while (exists) {
-    let responses = await author.clone().fetch_next_msgs();
+    let responses = await author.clone().fetchNextMsgs();
 
     if (responses.length === 0) {
       exists = false;
@@ -84,14 +84,14 @@ async function fetchNewMessages(author) {
 
     for (var i = 0; i < responses.length; i++) {
       const messageLink = responses[i].link;
-      console.log("Message link:",      responses[i].link.toString());
+      console.log("Message link:", responses[i].link.toString());
 
       //Fetch message details
       let messageDetails = await author.clone().get_client().get_link_details(messageLink.copy());
       console.log('\x1b[34m%s\x1b[0m', getExplorerUrl("mainnet", messageDetails.get_metadata().message_id));
 
-      console.log("Public payload: ",   from_bytes(responses[i].message.get_public_payload()));
-      console.log("Masked payload: ",   from_bytes(responses[i].message.get_masked_payload()));
+      console.log("Public payload: ", from_bytes(responses[i].message.get_public_payload()));
+      console.log("Masked payload: ", from_bytes(responses[i].message.get_masked_payload()));
       console.log("\n");
     }
   }

@@ -1,4 +1,19 @@
-#### Output from running main.js should look similar to this:
+# IOTA Streams node tutorial
+
+- fork from [adrian-grassl/iota-streams-tutorial](https://github.com/adrian-grassl/iota-streams-tutorial)
+- upgrade latest package version and migrate @iota/streams:1.2.1
+
+## Run main script
+
+```sh
+npm i
+```
+
+```sh
+node .
+```
+
+## Output from running main.js should look similar to this:
 
 ```
 Step 1
